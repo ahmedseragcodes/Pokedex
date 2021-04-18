@@ -20,9 +20,9 @@ useEffect(()=>{
       <div className="allPokemonContainer">
       {props.pokemon.map((individualPokemon)=>{
         return (
-          <div className="individualPokemonContainer">
+          <div key={individualPokemon.name} className="individualPokemonContainer">
             <p>{individualPokemon.name}</p>
-            <button>Delete Pokemon</button>
+            <button onClick={()=>props.deletePokemon(individualPokemon.name)} >Delete Pokemon</button>
             <button>Edit Pokemon</button>
           </div>
         )

@@ -24,8 +24,8 @@ export const fetchPokemon = () => (dispatch) => {
     })
 }
 
-export const deletePokemon = () => {
-    return ({ type: DELETE_POKEMON })
+export const deletePokemon = (pokemonToDelete) => {
+    return ({ type: DELETE_POKEMON, payload: pokemonToDelete })
 }
 
 export const addPokemon = (pokemonToAdd) => {

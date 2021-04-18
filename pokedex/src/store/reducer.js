@@ -42,7 +42,14 @@ const reducer = (state=initialState, action)=>{
                 error: "",
             };
         case(DELETE_POKEMON):
-            return state;
+            return {
+                ...state,
+                pokemon: state.pokemon.filter((uniquePokemon)=>{
+                    return uniquePokemon.name !== action.payload
+                }),
+                isLoading: false,
+                error: "",
+            };
         case(EDIT_POKEMON):
             return state;
         default: 
