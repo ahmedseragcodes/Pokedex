@@ -10,13 +10,13 @@ export const DELETE_POKEMON = "DELETE_POKEMON";
 export const ADD_POKEMON = "ADD_POKEMON";
 export const EDIT_POKEMON = "EDIT_POKEMON";
 
-export const fetchPokemon = () => dispatch => {
+export const fetchPokemon = () => (dispatch) => {
     dispatch({ type: FETCH_POKEMON_START })
-    axiosWithAuth()
+    axios
     .get("https://pokeapi.co/api/v2/pokemon?limit=50")
     .then((res)=>{
         console.log("SUCCEEDED FETCHING POKEMON", res);
-        dispatch({ type: FETCH_POKEMON_SUCCESS })
+        dispatch({ type: FETCH_POKEMON_SUCCESS, payload: res.data.results })
     })
     .catch((err)=>{
         console.log("FAILED TO FETCH POKEMON", err);

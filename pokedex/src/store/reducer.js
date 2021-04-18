@@ -32,7 +32,15 @@ const reducer = (state=initialState, action)=>{
                 error: action.payload,
             };
         case(ADD_POKEMON):
-            return state;
+            return {
+                ...state,
+                pokemon: [
+                    ...state.pokemon,
+                    action.payload
+                ],
+                isLoading: false,
+                error: "",
+            };
         case(DELETE_POKEMON):
             return state;
         case(EDIT_POKEMON):

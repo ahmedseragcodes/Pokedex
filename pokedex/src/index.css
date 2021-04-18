@@ -6,3 +6,23 @@ html {
   font-size: 62.5%;
   font-family: 'Tajawal', sans-serif;
 }
+.frontPageCatchAll {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+.allPokemonContainer {
+  display: flex-wrap;
+}
+h1 {
+  margin: 2rem;
+}
+.individualPokemonContainer {
+  font-size: 1.5rem;
+  margin: 1rem;
+  padding: 1rem;
+  box-shadow: 1rem 1rem 1rem 0rem black, -1rem -1rem 1rem 0rem black;
+}
+.individualPokemonContainer button {
+  margin: 1rem;
+}
