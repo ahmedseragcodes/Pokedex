@@ -2,19 +2,28 @@
 //TECH IMPORTS
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import { Route, Link } from "react-router-dom";
+import { Route, Link, useHistory, useParams } from "react-router-dom";
 //COMPONENT IMPORTS
 import { fetchPokemon, addPokemon, deletePokemon, editPokemon } from "./store/actions";
 
 
 function App(props) {
 
+const history = useHistory();
 
 useEffect(()=>{
   props.fetchPokemon();
 },[])
 
+const clickToEditPokemon = (pokemonToEdit) => {
+  history.push(`/${pokemonToEdit.name}`)
+}
+
   return (
+    <div>
+    <div className="frontPageNavBar">
+      <Link to="/">Home</Link>
+    </div>
     <div className="frontPageCatchAll">
       <h1>Pokedex</h1>
       <div className="allPokemonContainer">
@@ -23,11 +32,12 @@ useEffect(()=>{
           <div key={individualPokemon.name} className="individualPokemonContainer">
             <p>{individualPokemon.name}</p>
             <button onClick={()=>props.deletePokemon(individualPokemon.name)} >Delete Pokemon</button>
-            <button>Edit Pokemon</button>
+            <button onClick={()=>clickToEditPokemon(individualPokemon)} >Edit Pokemon</button>
           </div>
         )
       })}
       </div>
+    </div>
     </div>
   );
 }

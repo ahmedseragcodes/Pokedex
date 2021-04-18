@@ -51,7 +51,14 @@ const reducer = (state=initialState, action)=>{
                 error: "",
             };
         case(EDIT_POKEMON):
-            return state;
+            return {
+                ...state,
+                pokemon: state.pokemon.filter((uniquePokemon)=>{
+                    return uniquePokemon.name === action.payload.name ? action.payload : uniquePokemon
+                }),
+                isLoading: false,
+                error: "",
+            }
         default: 
             return state;
     }
