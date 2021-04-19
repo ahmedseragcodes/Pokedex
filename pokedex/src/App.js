@@ -1,25 +1,55 @@
-import logo from './logo.svg';
-import './App.css';
+/* eslint-disable no-unused-vars */
+//TECH IMPORTS
+import React, { useState, useEffect } from "react";
+import { connect } from "react-redux";
+import { Route, Link, useHistory, useParams } from "react-router-dom";
+//COMPONENT IMPORTS
+import { fetchPokemon, addPokemon, deletePokemon, editPokemon } from "./store/actions";
 
-function App() {
+
+function App(props) {
+
+const history = useHistory();
+
+useEffect(()=>{
+  props.fetchPokemon();
+},[])
+
+const clickToEditPokemon = (pokemonToEdit) => {
+  history.push(`/${pokemonToEdit.name}`)
+}
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+    <div className="frontPageNavBar">
+      <Link to="/">Home</Link>
+    </div>
+    <div className="frontPageCatchAll">
+      <h1>Pokedex</h1>
+      <div className="allPokemonContainer">
+      {props.pokemon.map((individualPokemon)=>{
+        return (
+          <div key={individualPokemon.name} className="individualPokemonContainer">
+            <p>{individualPokemon.name}</p>
+            <button onClick={()=>props.deletePokemon(individualPokemon.name)} >Delete Pokemon</button>
+            <button onClick={()=>clickToEditPokemon(individualPokemon)} >Edit Pokemon</button>
+          </div>
+        )
+      })}
+      </div>
+    </div>
     </div>
   );
 }
 
-export default App;
+//REDUX LOGIC
+const mapStateToProps = (state) => {
+  return {
+    pokemon: state.pokemon,
+    isLoading: state.isLoading,
+    error: state.error,
+  }
+}
+
+
+export default connect(mapStateToProps, { fetchPokemon, addPokemon, deletePokemon, editPokemon })(App);
