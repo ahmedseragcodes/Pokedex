@@ -24,6 +24,7 @@ const UpdatePokemon = (props) => {
             nameOfOriginalPokemon: params.name,
             name: params.name
         })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
 
     const handleSubmit = (event) => {
