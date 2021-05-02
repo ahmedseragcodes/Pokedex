@@ -1,3 +1,9 @@
+/* COLORS
+Red: #FF0000
+Yellow: #FFDE00
+Blue: #3B4CCA
+*/
+
 * {
   box-sizing: border-box;
   max-width: 100%;
@@ -5,6 +11,8 @@
 html {
   font-size: 62.5%;
   font-family: 'Tajawal', sans-serif;
+  color: #FFDE00;
+  background-color: #FF0000;
 }
 .frontPageCatchAll {
   display: flex;
@@ -19,10 +27,20 @@ h1 {
 }
 .individualPokemonContainer {
   font-size: 1.5rem;
-  margin: 1rem;
+  margin: 3rem;
   padding: 1rem;
-  box-shadow: 1rem 1rem 1rem 0rem black, -1rem -1rem 1rem 0rem black;
+  box-shadow: 1rem 1rem 1rem 0rem #FFDE00, -1rem -1rem 1rem 0rem #FFDE00;
+  background-color: #3B4CCA;
+  font-weight: bold;
+  border-radius: 2rem;
 }
 .individualPokemonContainer button {
   margin: 1rem;
+}
+button {
+  color: #3B4CCA;
+  background-color: #FFDE00;
+  border-radius: 1rem;
+  border: .7rem ridge #3B4CCA;
+  font-weight: bold;
 }

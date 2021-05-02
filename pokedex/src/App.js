@@ -5,22 +5,25 @@ import { connect } from "react-redux";
 import { Route, Link, useHistory, useParams } from "react-router-dom";
 //COMPONENT IMPORTS
 import { fetchPokemon, addPokemon, deletePokemon, editPokemon } from "./store/actions";
-
+import UpdatePokemon from "./components/updatePokemon";
 
 function App(props) {
 
 const history = useHistory();
+
+
 
 useEffect(()=>{
   props.fetchPokemon();
 },[])
 
 const clickToEditPokemon = (pokemonToEdit) => {
-  history.push(`/${pokemonToEdit.name}`)
+  history.push(`/update/${pokemonToEdit}`);
 }
 
   return (
     <div>
+    <Route exact path="/">
     <div className="frontPageNavBar">
       <Link to="/">Home</Link>
     </div>
@@ -32,12 +35,16 @@ const clickToEditPokemon = (pokemonToEdit) => {
           <div key={individualPokemon.name} className="individualPokemonContainer">
             <p>{individualPokemon.name}</p>
             <button onClick={()=>props.deletePokemon(individualPokemon.name)} >Delete Pokemon</button>
-            <button onClick={()=>clickToEditPokemon(individualPokemon)} >Edit Pokemon</button>
+            <button onClick={()=>clickToEditPokemon(individualPokemon.name)} >Edit Pokemon</button>
           </div>
         )
       })}
       </div>
     </div>
+    </Route>
+    <Route path="/update/:name">
+      <UpdatePokemon />
+    </Route>
     </div>
   );
 }
@@ -47,7 +54,7 @@ const mapStateToProps = (state) => {
   return {
     pokemon: state.pokemon,
     isLoading: state.isLoading,
-    error: state.error,
+    error: state.error
   }
 }
 
