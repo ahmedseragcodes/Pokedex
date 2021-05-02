@@ -44,3 +44,16 @@ button {
   border: .7rem ridge #3B4CCA;
   font-weight: bold;
 }
+a, link {
+  font-size: 1.5rem;
+  text-decoration: none;
+  color: #FFDE00;
+}
+input {
+  border: .5rem ridge #3B4CCA;
+  border-radius: 1rem;
+  margin: .5rem;
+  background-color: #FFDE00;
+  color: #3B4CCA;
+  font-weight: bold;
+}
