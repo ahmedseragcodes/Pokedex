@@ -15,6 +15,7 @@ const history = useHistory();
 
 useEffect(()=>{
   props.fetchPokemon();
+// eslint-disable-next-line react-hooks/exhaustive-deps
 },[])
 
 const clickToEditPokemon = (pokemonToEdit) => {

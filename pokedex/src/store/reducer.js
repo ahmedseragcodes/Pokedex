@@ -1,4 +1,5 @@
 //TECH IMPORTS
+// eslint-disable-next-line no-unused-vars
 import React from "react";
 //COMPONENT IMPORTS
 import { FETCH_POKEMON_START, FETCH_POKEMON_SUCCESS, FETCH_POKEMON_FAILURE, ADD_POKEMON, DELETE_POKEMON, EDIT_POKEMON } from "./actions";

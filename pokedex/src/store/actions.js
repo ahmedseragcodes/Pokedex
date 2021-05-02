@@ -1,6 +1,7 @@
 //TECH IMPORTS
 import axios from "axios"
 //COMP IMPORTS
+// eslint-disable-next-line no-unused-vars
 import axiosWithAuth from "../components/axiosWithAuth";
 
 export const FETCH_POKEMON_START = "FETCH_POKEMON_START";
