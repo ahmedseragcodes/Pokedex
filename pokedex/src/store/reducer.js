@@ -6,7 +6,7 @@ import { FETCH_POKEMON_START, FETCH_POKEMON_SUCCESS, FETCH_POKEMON_FAILURE, ADD_
 const initialState = {
     pokemon: [],
     isLoading: false,
-    error: "",
+    error: ""
 }
 
 
@@ -53,11 +53,11 @@ const reducer = (state=initialState, action)=>{
         case(EDIT_POKEMON):
             return {
                 ...state,
-                pokemon: state.pokemon.filter((uniquePokemon)=>{
-                    return uniquePokemon.name === action.payload.name ? action.payload : uniquePokemon
+                pokemon: state.pokemon.map((uniquePokemon)=>{
+                    return uniquePokemon.name === action.payload.nameOfOriginalPokemon ? action.payload : uniquePokemon
                 }),
                 isLoading: false,
-                error: "",
+                error: ""
             }
         default: 
             return state;
